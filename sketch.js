@@ -1,4 +1,4 @@
-let capture
+//let capture
 
 
 //let pedal = 5;
@@ -8,8 +8,9 @@ let tileSize;
 let img; // Declare variable 'img'.
 
 function setup(){
-  createCanvas(640, 480, WEBGL);
+  createCanvas(900, 900, WEBGL);
    img = loadImage('kingkrule.jpg');
+   img.resize(900, 900);
   //MidiBus.list();
   //myBus = new MidiBus(this, "Teensy MIDI", -1);
     //video = new Capture(this, 640, 480, 10);
@@ -36,8 +37,8 @@ function mousePressed() {
 function draw() {
   
   background(220);
-  translate(-width/2, -height/2);
-  image(img, 0, 0);
+  //translate(width/2, height/2);
+  //image(img, 0, 0);
   //image(img, 0, height / 2, img.width / 2, img.height / 2);
   //image(capture, -width/2, -height/2, 320, 240)
   //filter(GRAY);
@@ -49,12 +50,12 @@ function draw() {
   
   //let tiles = pedal;
   //tiles = map(mouseX, 0, 127, 0, width/2);
-  tiles = mouseX
+  tiles = mouseX/10
   tileSize = width/tiles;
   
   push();
-  translate(width/2, height/2);
-  rotateY(radians(frameCount));
+  //translate(width/2, height/2);
+  //rotateY(radians(frameCount));
   for (x = 1; x <tiles; x++) {
     for ( y = 1; y < tiles; y++) {
       let c = img.get(Math.floor(x*tileSize), Math.floor(x*tileSize));
@@ -65,7 +66,7 @@ function draw() {
       push();
       translate(x*tileSize - width/2, y*tileSize - width/2, z);
       fill(c);
-      sphere(tileSize*b*0.8, 5, 5);
+      rect(0, 0, tileSize*b*0.8, 5);
       pop();
 
     }
